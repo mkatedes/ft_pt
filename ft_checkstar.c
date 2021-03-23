@@ -51,9 +51,9 @@ char		*ft_checkstar(char *tab, int *i, va_list valist, int *g_free)
 	int		ii;
 
 	ii = *i;
-	while (tab[ii] != 'u' & tab[ii] != 'd' & tab[ii] != 'i' & tab[ii] != 'x' &
-			tab[ii] != 'X' & tab[ii] != 'c' & tab[ii] != 's'
-			& tab[ii] != '%' & tab[ii] != 'p')
+	while (tab[ii] != 'u' && tab[ii] != 'd' && tab[ii] != 'i' && tab[ii] != 'x' &&
+			tab[ii] != 'X' && tab[ii] != 'c' && tab[ii] != 's'
+			&& tab[ii] != '%' && tab[ii] != 'p')
 	{
 		if (tab[ii] == '*')
 		{

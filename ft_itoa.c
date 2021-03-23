@@ -20,7 +20,8 @@ char	*ft_itoa(int n)
 
 	tmp = n;
 	count = (n >= 0) ? 1 : 2;
-	tmp = (n < 0) ? tmp *= -1 : tmp;
+	if (n < 0)
+		tmp *= -1;
 	while ((tmp /= 10) > 0)
 		count++;
 	if (!(res = malloc(sizeof(*res) * count + 1)))

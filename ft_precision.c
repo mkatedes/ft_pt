@@ -46,6 +46,7 @@ char		*ft_precision(t_print tmp)
 
 	p = tmp.precision;
 	x = -1;
+
 	if (ft_strlen(tmp.str) == tmp.precision && tmp.type != 'd')
 	{
 		tmp.precision = tmp.padding;

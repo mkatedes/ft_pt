@@ -30,15 +30,15 @@ static char	*padsuplen(t_print tmp, int k, int l, int f)
 	free_s = tmp.precision;
 	if (tmp.precision > 0 && tmp.precision < tmp.padding && tmp.type == 's')
 	{
-		res = ft_strdup(tmp.str);
-		k = tmp.precision;
-		while (k < tmp.in_len)
-			res[k++] = '\0';
 		if (tmp.precision > tmp.in_len)
 		{
 			tmp.precision = tmp.padding;
 			return (ft_paddingleft(tmp, tmp.padding, -1));
 		}
+		res = ft_strdup(tmp.str);
+		k = tmp.precision;
+		while (k < tmp.in_len)
+			res[k++] = '\0';
 		return (res);
 	}
 	else
