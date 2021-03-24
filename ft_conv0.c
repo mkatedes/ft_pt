@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 15:50:09 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/24 13:35:33 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 15:02:46 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*padsuplen(char *res, t_print tmp)
 	j = tmp.padding;
 	res[j] = '\0';
 	if (tmp.str[0] == '-')
-		padsupminus(&l, &j, &res, tmp);
+		k = padsupminus(&l, &j, &res, tmp);
 	if (tmp.precision == 0 && tmp.type == 'd')
 		while (++k < j - ft_strlen(tmp.str))
 			res[k] = ' ';
