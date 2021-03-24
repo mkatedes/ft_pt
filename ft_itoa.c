@@ -6,11 +6,27 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 11:21:59 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/01/29 13:59:29 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 14:27:42 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static void	init(int n, long tmp, int *count)
+{
+	tmp = n;
+	if (n >= 0)
+		*count = 0;
+	else
+		*count = 1;
+	if (n < 0)
+		(tmp) *= -1;
+	while ((tmp) > 0)
+	{
+		tmp /= 10;
+		(*count)++;
+	}
+}
 
 char	*ft_itoa(int n)
 {
@@ -18,13 +34,10 @@ char	*ft_itoa(int n)
 	long	tmp;
 	char	*res;
 
-	tmp = n;
-	count = (n >= 0) ? 1 : 2;
-	if (n < 0)
-		tmp *= -1;
-	while ((tmp /= 10) > 0)
-		count++;
-	if (!(res = malloc(sizeof(*res) * count + 1)))
+	tmp = 0;
+	init(n, tmp, &count);
+	res = malloc(sizeof(*res) * count + 1);
+	if (!res)
 		return (0);
 	res[count] = '\0';
 	tmp = n;
@@ -33,10 +46,12 @@ char	*ft_itoa(int n)
 		tmp *= -1;
 		res[0] = '-';
 	}
-	tmp *= 10;
 	if (tmp == 0)
 		res[0] = '0';
-	while ((tmp /= 10) > 0)
+	while (tmp > 0)
+	{
 		res[--count] = (char)(48 + tmp % 10);
+		tmp /= 10;
+	}
 	return (res);
 }

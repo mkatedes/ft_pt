@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:37:13 by mkomadin          #+#    #+#             */
-/*   Updated: 2020/12/10 12:59:15 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:19:36 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putchar(char a)
 
 void	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])

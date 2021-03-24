@@ -6,13 +6,13 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:16:31 by mkomadin          #+#    #+#             */
-/*   Updated: 2020/11/25 15:16:47 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:16:26 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])

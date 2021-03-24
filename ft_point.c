@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:24:23 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/02/22 13:32:56 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:37:23 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	fillchar(char **res, int j)
 
 static int	initlen(int a)
 {
-	int len;
+	int	len;
 
 	if (a < 0)
 		len = ft_strlen(ft_convertbase(a)) + 4;
@@ -45,7 +45,7 @@ static int	initlen(int a)
 
 static char	*case2(int *j, char **res, int a)
 {
-	char *str;
+	char	*str;
 
 	*j = 3;
 	fillchar(res, *j);
@@ -59,7 +59,7 @@ static char	*case2(int *j, char **res, int a)
 	return (str);
 }
 
-char		*ft_point(int a)
+char	*ft_point(int a)
 {
 	char			*res;
 	char			*str;
@@ -68,7 +68,8 @@ char		*ft_point(int a)
 	int				len;
 
 	len = initlen(a);
-	if (!(res = malloc(sizeof(char) * len)))
+	res = malloc(sizeof(char) * len);
+	if (!res)
 		return (0);
 	i = -1;
 	if (a < 0)

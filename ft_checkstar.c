@@ -6,11 +6,23 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:05:44 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/08 15:31:58 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 14:28:35 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static char	*init(int *k, int *j, char *tab, char *tmp)
+{
+	char *res;
+
+	res = malloc(sizeof(char) * ft_strlen(tab) + ft_strlen(tmp) + 1);
+	if (res == NULL)
+		return (0);
+	*j = -1;
+	*k = -1;
+	return (res);
+}
 
 static char	*replace(char *tab, char *tmp, int ii, int *g_free)
 {
@@ -18,11 +30,7 @@ static char	*replace(char *tab, char *tmp, int ii, int *g_free)
 	int		k;
 	char	*res;
 
-	if (!(res = malloc(sizeof(char) * ft_strlen(tab) +
-					ft_strlen(tmp) + 1)))
-		return (0);
-	j = -1;
-	k = -1;
+	res = init(&k, &j, tab, tmp);
 	while (tab[++j])
 	{
 		if (j == ii)
@@ -44,16 +52,16 @@ static char	*replace(char *tab, char *tmp, int ii, int *g_free)
 	return (res);
 }
 
-char		*ft_checkstar(char *tab, int *i, va_list valist, int *g_free)
+char	*ft_checkstar(char *tab, int *i, va_list valist, int *g_free)
 {
 	char	*tmp;
 	char	*res;
 	int		ii;
 
 	ii = *i;
-	while (tab[ii] != 'u' && tab[ii] != 'd' && tab[ii] != 'i' && tab[ii] != 'x' &&
-			tab[ii] != 'X' && tab[ii] != 'c' && tab[ii] != 's'
-			&& tab[ii] != '%' && tab[ii] != 'p')
+	while (tab[ii] != 'u' && tab[ii] != 'd' && tab[ii] != 'i' && tab[ii] != 'x'
+		&& tab[ii] != 'X' && tab[ii] != 'c' && tab[ii] != 's'
+		&& tab[ii] != '%' && tab[ii] != 'p')
 	{
 		if (tab[ii] == '*')
 		{

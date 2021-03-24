@@ -6,16 +6,16 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:19:36 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/01/29 14:02:37 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:22:08 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_strlcpy(char *dst, char *src, int len)
+int	ft_strlcpy(char *dst, char *src, int len)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	j = ft_strlen(src);

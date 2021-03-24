@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 13:35:38 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/08 13:35:08 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 13:45:17 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	checkzero(t_print *res, int *i, const char *tab, int *k)
 				res->precision = 1;
 				return (2);
 			}
+			else if (!ft_isdigit(tab[(*i) + 1]))
+				res->padding = -2;
 			else
 				res->padding = 0;
 		}
@@ -37,6 +39,12 @@ static int	checkzero(t_print *res, int *i, const char *tab, int *k)
 			res->precision = 1;
 			res->padding_char = '-';
 			return (0);
+		}
+		else if (res->padding_char == '0' && tab[(*i) + 1]== '.')
+		{
+			(*i) += 2;
+			res->padding = -2;
+			res->precision = -2;
 		}
 		else
 			res->padding = -1;

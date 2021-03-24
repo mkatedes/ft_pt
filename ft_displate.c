@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 11:59:43 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/02/22 12:06:06 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:08:44 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ static char	*typed(t_print *tmp, char *res, int *i, int *p)
 	return (res);
 }
 
-char		*ft_displate(t_print tmp)
+char	*ft_displate(t_print tmp)
 {
 	char	*res;
 	int		i;
 	int		p;
 
-	if (!(res = malloc(sizeof(char) * ft_strlen(tmp.str))))
-		return (0);
 	i = -1;
 	p = -1;
+	res = malloc(sizeof(char) * ft_strlen(tmp.str));
+	if (!res)
+		return (0);
 	if (tmp.type == 'd')
 		res = typed(&tmp, res, &i, &p);
 	else

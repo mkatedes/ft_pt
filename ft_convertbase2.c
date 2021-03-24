@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/16 17:09:58 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/02/10 15:53:07 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:24:25 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_itoahex(long nb, int len, char **res)
 		ft_itoahex(nb, len, res);
 }
 
-char		*ft_convertbase2(int nbr)
+char	*ft_convertbase2(int nbr)
 {
 	char	*res;
 	int		i;
@@ -46,14 +46,15 @@ char		*ft_convertbase2(int nbr)
 		tmp /= 16;
 		i++;
 	}
-	if (!(res = malloc(sizeof(char) * i)))
+	res = malloc(sizeof(char) * i);
+	if (!res)
 		return (0);
 	ft_itoahex((long)nbr, i, &res);
 	res[i] = '\0';
 	return (res);
 }
 
-char		*ft_convertbase4(unsigned int nbr)
+char	*ft_convertbase4(unsigned int nbr)
 {
 	char	*res;
 	int		i;
@@ -71,7 +72,8 @@ char		*ft_convertbase4(unsigned int nbr)
 		tmp /= 16;
 		i++;
 	}
-	if (!(res = malloc(sizeof(char) * i)))
+	res = malloc(sizeof(char) * i);
+	if (!res)
 		return (0);
 	ft_itoahex((long)nbr, i, &res);
 	res[i] = '\0';

@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 13:55:40 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/18 11:15:33 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 14:25:28 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int			ft_printf(const char *tab, ...)
 				tmp.precision = ft_getprecision(tab, &i);
 			else
 				x = -7;
+			if (tmp.padding == -2 && tmp.precision)
+			{
+				va_arg(valist, int);
+				continue ;
+			}
 			if (tmp.padding_char == '0' && tab[i] == '0')
 			{
 				if (tab[i + 1] == 'd' || tab[i + 1] == 'i' || tab[i + 1] == 'x'
@@ -171,10 +176,10 @@ int			ft_printf(const char *tab, ...)
 				{
 					if ((tmp.padding > tmp.in_len) || 
 							(tmp.padding != -1 && tmp.precision != -1) || 
-							(tmp.padding_char == '.' && tmp.padding <= tmp.in_len && tmp.padding > 0))
+							(tmp.padding_char == '.' && tmp.padding <= tmp.in_len && tmp.padding > 0)
+							|| tmp.padding == -2)
 					{
 						free(tmp.str);
-						//printf(" %d \n", (tmp.padding > tmp.in_len));
 					}
 				}
 			}

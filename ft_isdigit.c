@@ -6,11 +6,11 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:22:38 by mkomadin          #+#    #+#             */
-/*   Updated: 2020/11/25 15:22:46 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 11:59:24 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c > 47 && c < 58)
 		return (1);

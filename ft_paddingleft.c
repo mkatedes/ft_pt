@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 13:49:42 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/17 17:17:20 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 13:37:55 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,5 @@ char		*ft_paddingleft(t_print tmp, int padding, int f)
 		else
 			return (tmp.str);
 	}
-	if (tmp.type != 's')
-		free(tmp.str);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 13:43:45 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/17 12:32:42 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:35:38 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*padinflen(t_print tmp)
 		return (tmp.str);
 }
 
-char		*ft_paddingright(t_print tmp, int padding)
+char	*ft_paddingright(t_print tmp, int padding)
 {
 	int		k;
 	int		l;
@@ -29,7 +29,8 @@ char		*ft_paddingright(t_print tmp, int padding)
 	k = -1;
 	if (padding > ft_strlen(tmp.str))
 	{
-		if (!(res = malloc(sizeof(char) * (padding + 2))))
+		res = malloc(sizeof(char) * (padding + 2));
+		if (!res)
 			return (0);
 		l = -1;
 		if (tmp.in_len == 1 && tmp.str[0] == '0' && tmp.precision == 0)

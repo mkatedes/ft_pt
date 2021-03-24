@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 14:07:42 by mkomadin          #+#    #+#             */
-/*   Updated: 2020/12/18 14:43:19 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/24 12:18:52 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ char	*ft_uitoa(unsigned int n)
 	char			*res;
 
 	tmp = n;
-	count = 1;
-	while ((tmp /= 10) > 0)
+	count = 0;
+	while (tmp > 0)
+	{
+		tmp /= 10;
 		count++;
-	if (!(res = malloc(sizeof(*res) * count + 1)))
+	}
+	res = malloc(sizeof(*res) * count + 1);
+	if (!res)
 		return (0);
 	res[count] = '\0';
 	tmp = n;
