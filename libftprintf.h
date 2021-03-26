@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 14:03:57 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/26 13:48:37 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 16:35:23 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void				ft_putstr(char *a);
 void				ft_bzero(void *a);
 void				ft_endfree(t_print tmp);
 void				ft_checkandprint(int *cmp, int *x, t_print tmp);
+void				ft_secondcheck(t_print *tmp, int *x, va_list valist);
 
 int					ft_printf(const char *a, ...);
 int					ft_atoi(char *a);
@@ -43,6 +44,9 @@ int					ft_strlcat(char *dst, const char *src, int i);
 int					ft_getprecision(const char *tab, int *i);
 int					ft_getpadding(const char *tab, int *i, t_print *res);
 int					ft_paddingandprecision(int *x, int *cmp, t_print *tmp);
+int					ft_procesprint(int *cmp, int *i, const char *tab, va_list valist);
+int					ft_fristcheck(t_print *tmp, int *i, va_list valist, const char *tab);
+int					ft_thirdcheck(int *x, int *cmp, int *i, t_print *tmp);
 
 char				*ft_vatochar(va_list valist, char c, t_print *tmp);
 char				*ft_convertbase(int i);

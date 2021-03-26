@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 13:16:22 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/26 13:28:40 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 14:18:48 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_checkandprint(int *cmp, int *x, t_print tmp)
 				write(1, " ", 1);
 		}
 	}
-	cmp += ft_strlen(tmp.str);
+	(*cmp) += ft_strlen(tmp.str);
 	if (tmp.type == 'c' && tmp.str[tmp.padding] == 0
 		&& tmp.padding_char != '-' && *x == -10)
 	{
-		cmp++;
+		(*cmp)++;
 		write(1, "\0", 1);
 	}
 }
