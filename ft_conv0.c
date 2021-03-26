@@ -89,12 +89,12 @@ char	*ft_conv0(t_print tmp)
 	}
 	else
 	{
-		if (tmp.type == 's')
+		if (tmp.type == 's' && tmp.padding > 0)
 		{
 			res = malloc(sizeof(char) * tmp.padding + 1);
 			if (!res)
 				return (0);
-			ft_strlcpy(res, tmp.str, tmp.padding + 1);
+			ft_strlcpy(res, tmp.str, tmp.padding + 1);	printf("dd");
 			return (res);
 		}
 		return (tmp.str);
