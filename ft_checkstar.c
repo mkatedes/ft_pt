@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:05:44 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/24 14:28:35 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 10:51:30 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*init(int *k, int *j, char *tab, char *tmp)
 {
-	char *res;
+	char	*res;
 
 	res = malloc(sizeof(char) * ft_strlen(tab) + ft_strlen(tmp) + 1);
 	if (res == NULL)

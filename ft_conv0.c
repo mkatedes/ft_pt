@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 15:50:09 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/24 15:02:46 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 10:51:51 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*ft_conv0(t_print tmp)
 			res = malloc(sizeof(char) * tmp.padding + 1);
 			if (!res)
 				return (0);
-			ft_strlcpy(res, tmp.str, tmp.padding + 1);	printf("dd");
+			ft_strlcpy(res, tmp.str, tmp.padding + 1);
 			return (res);
 		}
 		return (tmp.str);

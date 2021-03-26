@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 14:03:57 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/17 17:08:14 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 13:48:37 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct		s_printable
 void				ft_putchar(char a);
 void				ft_putstr(char *a);
 void				ft_bzero(void *a);
+void				ft_endfree(t_print tmp);
+void				ft_checkandprint(int *cmp, int *x, t_print tmp);
 
 int					ft_printf(const char *a, ...);
 int					ft_atoi(char *a);
@@ -40,6 +42,7 @@ int					ft_isdigit(int c);
 int					ft_strlcat(char *dst, const char *src, int i);
 int					ft_getprecision(const char *tab, int *i);
 int					ft_getpadding(const char *tab, int *i, t_print *res);
+int					ft_paddingandprecision(int *x, int *cmp, t_print *tmp);
 
 char				*ft_vatochar(va_list valist, char c, t_print *tmp);
 char				*ft_convertbase(int i);

@@ -6,18 +6,19 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 15:54:17 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/24 14:48:22 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 13:53:54 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char		*casec(t_print *tmp, va_list valist)
+static char	*casec(t_print *tmp, va_list valist)
 {
 	char	*a;
 	int		t;
 
-	if (!(a = malloc(sizeof(char) * 2)))
+	a = malloc(sizeof(char) * 2);
+	if (!a)
 		return (0);
 	t = va_arg(valist, int);
 	a[0] = t;
@@ -27,11 +28,12 @@ static char		*casec(t_print *tmp, va_list valist)
 	return (a);
 }
 
-static char		*casepercent(t_print *tmp)
+static char	*casepercent(t_print *tmp)
 {
 	char	*a;
 
-	if (!(a = malloc(sizeof(char) * 2)))
+	a = malloc(sizeof(char) * 2);
+	if (!a)
 		return (0);
 	a[0] = '%';
 	a[1] = '\0';
@@ -41,7 +43,7 @@ static char		*casepercent(t_print *tmp)
 	return (a);
 }
 
-static char		*caselowerx(va_list valist)
+static char	*caselowerx(va_list valist)
 {
 	int		res;
 
@@ -51,7 +53,7 @@ static char		*caselowerx(va_list valist)
 	return (ft_convertbase(res));
 }
 
-static char		*caseupperx(va_list valist)
+static char	*caseupperx(va_list valist)
 {
 	int		res;
 
@@ -61,7 +63,7 @@ static char		*caseupperx(va_list valist)
 	return (ft_convertbase2(res));
 }
 
-char			*ft_vatochar(va_list valist, char c, t_print *tmp)
+char	*ft_vatochar(va_list valist, char c, t_print *tmp)
 {
 	if (c == 'c')
 		return (casec(tmp, valist));

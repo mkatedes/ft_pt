@@ -6,7 +6,7 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 13:55:40 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/24 14:50:07 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 14:07:50 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,85 @@
 
 int			g_free;
 
-int			ft_printf(const char *tab, ...)
+static int	fristcheck(t_print *tmp, int *i, va_list valist, const char *tab)
+{
+	if (tmp->padding == -2 && tmp->precision)
+	{
+		va_arg(valist, int);
+		return (0);
+	}
+	if (tmp->padding_char == '0' && tab[*i] == '0')
+	{
+		if (tab[*i + 1] == 'd' || tab[*i + 1] == 'i' || tab[*i + 1] == 'x'
+			|| tab[*i + 1] == 'X' || tab[*i + 1] == 'c')
+			tmp->type = tab[++(*i)];
+	}
+	if (tmp->padding_char == '-' && tab[*i] == '-')
+	{
+		(*i)++;
+		ft_getpadding(tab, i, tmp);
+		if (tab[*i] == '.')
+		{
+			(*i)++;
+			if (tab[*i] == '-')
+				(*i)++;
+			while (ft_isdigit(tab[*i]))
+				(*i)++;
+		}
+	}
+	return (1);
+}
+
+static void	secondcheck(t_print *tmp, int *x, va_list valist)
+{
+	if (tmp->type == 'c' && tmp->str[0] == 0)
+	{
+		if (tmp->padding > 0)
+			tmp->padding--;
+		if (tmp->precision > 0)
+			tmp->precision--;
+		*x = -10;
+	}
+	if (tmp->type == 'i' || tmp->type == 'u'
+		|| tmp->type == 'x' || tmp->type == 'X')
+	{
+		tmp->typeb = tmp->type;
+		if (tmp->typeb == 'X')
+			tmp->typeb = 'x';
+		tmp->type = 'd';
+	}
+	if (!tmp->str)
+	{
+		free(tmp->str);
+		tmp->str = "(null)";
+		if (tmp->type == '.')
+			va_arg(valist, int);
+	}
+}
+
+static int	thirdcheck(int *x, int *cmp, int *i, t_print *tmp)
+{
+	if (*x == -5)
+	{
+		tmp->padding = -1;
+		tmp->precision = -1;
+	}
+	if (tmp->type == '.')
+	{
+		while (tmp->padding--)
+		{
+			write(1, " ", 1);
+			(*cmp)++;
+		}
+		(*i)++;
+		return (0);
+	}
+	if (ft_paddingandprecision(x, cmp, tmp) == 0)
+		return (0);
+	return (1);
+}
+
+int	ft_printf(const char *tab, ...)
 {
 	va_list		valist;
 	int			i;
@@ -56,139 +134,17 @@ int			ft_printf(const char *tab, ...)
 				tmp.precision = ft_getprecision(tab, &i);
 			else
 				x = -7;
-			if (tmp.padding == -2 && tmp.precision)
-			{
-				va_arg(valist, int);
+			if (fristcheck(&tmp, &i, valist, tab) == 0)
 				continue ;
-			}
-			if (tmp.padding_char == '0' && tab[i] == '0')
-			{
-				if (tab[i + 1] == 'd' || tab[i + 1] == 'i' || tab[i + 1] == 'x'
-						|| tab[i + 1] == 'X' || tab[i + 1] == 'c')
-					tmp.type = tab[++i];
-			}
-			if (tmp.padding_char == '-' && tab[i] == '-')
-			{
-				i++;
-				ft_getpadding(tab, &i, &tmp);
-				if (tab[i] == '.')
-				{
-					i++;
-					if (tab[i] == '-')
-						i++;
-					while (ft_isdigit(tab[i]))
-						i++;
-				}
-			}
 			tmp.type = tab[i];
 			tmp.str = ft_vatochar(valist, tab[i], &tmp);
 			if (x == -7 && tmp.type == 's')
 				tmp.padding_char = '-';
-			if (tmp.type == 'c' && tmp.str[0] == 0)
-			{
-				if (tmp.padding > 0)
-					tmp.padding--;
-				if (tmp.precision > 0)
-					tmp.precision--;
-				x = -10;
-			}
-			if (x == -5)
-			{
-				tmp.padding = -1;
-				tmp.precision = -1;
-			}
-			if (tmp.type == 'i' || tmp.type == 'u' || tmp.type == 'x' || tmp.type == 'X')
-			{
-				tmp.typeb = tmp.type;
-				if (tmp.typeb == 'X')
-					tmp.typeb = 'x';
-				tmp.type = 'd';
-			}
-			if (!tmp.str)
-			{
-				free(tmp.str);
-				tmp.str = "(null)";
-				if (tmp.type == '.')
-					va_arg(valist, int);
-			}
-			if (tmp.type == '.')
-			{
-				while (tmp.padding--)
-				{
-					write(1, " ", 1);
-					cmp++;
-				}
-				i++;
+			secondcheck(&tmp, &x, valist);
+			if (thirdcheck(&x, &cmp, &i, &tmp) == 0)
 				continue ;
-			}
-			tmp.in_len = ft_strlen(tmp.str);
-			if (tmp.padding_char == '0')
-				tmp.str = ft_conv0(tmp);
-			else if (tmp.padding_char == '1')
-				tmp.str = ft_paddingleft(tmp, tmp.padding, 0);
-			else if (tmp.padding_char == '-')
-				tmp.str = ft_paddingright(tmp, tmp.padding);
-			else if (tmp.padding_char == '.')
-				tmp.str = ft_conv0(tmp);
-			if (tmp.precision > 0 && tmp.type != '%')
-				tmp.str = ft_precision(tmp);
-			if (tmp.precision == 0 && tmp.padding > 0 && tmp.type == 'd')
-			{
-				if (tmp.str[0] == '0')
-				{
-					x = -1;
-					while (++x < tmp.padding)
-						write(1, " ", 1);
-					free(tmp.str);
-					cmp += x;
-					continue ;
-				}
-				else
-					tmp.precision++;
-			}
-			if (tmp.type == 'c' && tmp.str[tmp.padding] == 0 && tmp.padding_char == '-'
-					&& x == -10)
-			{
-				cmp++;
-				write(1, "\0", 1);
-			}
-			if (tmp.precision != 0)
-				ft_putstr(tmp.str);
-			else
-			{
-				if (tmp.padding > 0)
-				{
-					x = -1;
-					while (++x < tmp.padding)
-						write(1, " ", 1);
-				}
-			}
-			cmp += ft_strlen(tmp.str);
-			if (tmp.type == 'c' && tmp.str[tmp.padding] == 0 && tmp.padding_char != '-'
-					&& x == -10)
-			{
-				cmp++;
-				write(1, "\0", 1);
-			}
-			if (tmp.type == 's')
-			{
-				if (tmp.padding_char != '%')
-				{
-					if ((tmp.padding > tmp.in_len) || 
-							(tmp.padding != -1 && tmp.precision != -1) || 
-							(tmp.padding_char == '.' && tmp.padding <= tmp.in_len && tmp.padding > 0)
-							|| tmp.padding == -2)
-					{
-						free(tmp.str);
-					}
-				}
-			}
-			else
-			{
-				if (tmp.padding != 0 || (tmp.padding == 0 && tmp.padding_char == '-') || ft_atoi(tmp.str) > 0
-						|| (tmp.typeb == 'x' && tmp.precision > 0 && tmp.padding > 0))
-					free(tmp.str);
-			}
+			ft_checkandprint(&cmp, &x, tmp);
+			ft_endfree(tmp);
 		}
 		else
 		{
