@@ -85,6 +85,7 @@ int	ft_thirdcheck(int *x, int *cmp, int *i, t_print *tmp)
 		(*i)++;
 		return (0);
 	}
+	tmp->in_len = ft_strlen(tmp->str);
 	if (ft_paddingandprecision(x, cmp, tmp) == 0)
 		return (0);
 	return (1);

@@ -12,10 +12,9 @@
 
 #include "libftprintf.h"
 
-static void	init(int *x, int *i, int *cmp, t_print *tmp)
+static void	init(int *x, int *i, t_print *tmp)
 {
 	*x = *i;
-	*cmp = 0;
 	tmp->precision = 0;
 	tmp->typeb = '0';
 }
@@ -44,7 +43,7 @@ int	ft_procesprint(int *cmp, int *i, const char *tab, va_list valist)
 	int		x;
 	t_print	tmp;
 
-	init(&x, i, cmp, &tmp);
+	init(&x, i, &tmp);
 	if (checkempty(cmp, i, &x, tab) == 0)
 		return (0);
 	if (ft_getpadding(tab, i, &tmp) != 2)
@@ -61,6 +60,6 @@ int	ft_procesprint(int *cmp, int *i, const char *tab, va_list valist)
 	if (ft_thirdcheck(&x, cmp, i, &tmp) == 0)
 		return (0);
 	ft_checkandprint(cmp, &x, tmp);
-	ft_endfree(tmp);
+	ft_endfree(&tmp);
 	return (1);
 }

@@ -107,18 +107,17 @@ static char	*precisionsup(int p, int x, t_print tmp)
 
 char	*ft_precision(t_print tmp)
 {
-	int		p;
 	int		x;
 
-	p = tmp.precision;
 	x = -1;
 	if (ft_strlen(tmp.str) == tmp.precision && tmp.type != 'd')
 	{
 		tmp.precision = tmp.padding;
-		return (ft_paddingleft(tmp, tmp.padding, 0));
+	printf("%d %d\n", tmp.padding, tmp.precision);
+		return (ft_paddingleft(tmp, tmp.padding, 1));
 	}
-	if (p >= ft_strlen(tmp.str) || tmp.type == 's')
-		return (precisionsup(p, x, tmp));
+	if (tmp.precision >= ft_strlen(tmp.str) || tmp.type == 's')
+		return (precisionsup(tmp.precision, x, tmp));
 	else
-		return (precisioninf(tmp, p, x));
+		return (precisioninf(tmp, tmp.precision, x));
 }

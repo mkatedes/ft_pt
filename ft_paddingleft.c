@@ -40,10 +40,8 @@ static char	*padsuptypes(int k, t_print tmp)
 
 static char	*padsuplen(t_print tmp, int k, int l, int f)
 {
-	int		free_s;
 	char	*res;
 
-	free_s = tmp.precision;
 	if (tmp.precision > 0 && tmp.precision < tmp.padding && tmp.type == 's')
 		return (padsuptypes(k, tmp));
 	else
@@ -57,10 +55,12 @@ static char	*padsuplen(t_print tmp, int k, int l, int f)
 		tmp.padding++;
 		l = -5;
 	}
-	if ((free_s <= tmp.in_len && free_s > 0 && tmp.type == 's')
-		|| (free_s > 0 && tmp.padding_char == '1' && f != -1))
-		free(tmp.str);
 	res = fill(res, tmp, k, l);
+	if (f == 1)
+		return (res);
+	if ((tmp.precision <= tmp.in_len && tmp.precision > 0 && tmp.type == 's')
+		|| (tmp.precision > 0 && tmp.padding_char == '1' && f != -1))
+		free(tmp.str);
 	return (res);
 }
 
@@ -73,20 +73,8 @@ char	*ft_paddingleft(t_print tmp, int padding, int f)
 	k = -1;
 	l = 0;
 	if (padding > ft_strlen(tmp.str))
-		res = padsuplen(tmp, k, l, f);
+		res = padsuplen(tmp, k , l, f);
 	else
-	{
-		if (tmp.precision > 0)
-		{
-			res = malloc(sizeof(char) * ft_strlen(tmp.str));
-			if (!res)
-				return (0);
-			while (tmp.str[++k])
-				res[k] = tmp.str[k];
-			res[k] = '\0';
-		}
-		else
-			return (tmp.str);
-	}
+		return (tmp.str);
 	return (res);
 }

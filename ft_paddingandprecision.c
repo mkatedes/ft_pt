@@ -20,7 +20,6 @@ static void	tmp0(t_print *tmp)
 
 int	ft_paddingandprecision(int *x, int *cmp, t_print *tmp)
 {
-	tmp->in_len = ft_strlen(tmp->str);
 	if (tmp->padding_char == '0')
 		tmp->str = ft_conv0(*tmp);
 	else if (tmp->padding_char == '1')

@@ -41,28 +41,28 @@ void	ft_checkandprint(int *cmp, int *x, t_print tmp)
 	}
 }
 
-void	ft_endfree(t_print tmp)
+void	ft_endfree(t_print *tmp)
 {
-	if (tmp.type == 's')
+	if (tmp->type == 's')
 	{
-		if (tmp.padding_char != '%')
+		if (tmp->padding_char != '%')
 		{
-			if ((tmp.padding > tmp.in_len)
-				|| (tmp.padding != -1 && tmp.precision != -1)
-				|| (tmp.padding_char == '.' && tmp.padding <= tmp.in_len
-					&& tmp.padding > 0) || tmp.padding == -2)
-			{
-				free(tmp.str);
-			}
+			if (((tmp->padding > tmp->in_len)
+				|| (tmp->padding != -1 && tmp->precision != -1 && tmp->in_len != tmp->padding)
+				|| (tmp->padding_char == '.' && tmp->padding <= tmp->in_len
+					&& tmp->padding > 0) || tmp->padding == -2)
+				|| (tmp->precision > tmp->in_len && tmp->precision > 0)
+				|| (tmp->padding_char == '-' && tmp->padding <= tmp->in_len))
+				free(tmp->str);
 		}
 	}
 	else
 	{
-		if (tmp.padding != 0
-			|| (tmp.padding == 0 && tmp.padding_char == '-')
-			|| ft_atoi(tmp.str) > 0
-			|| (tmp.typeb == 'x' && tmp.precision > 0
-				&& tmp.padding > 0))
-			free(tmp.str);
+		if (tmp->padding != 0
+			|| (tmp->padding == 0 && tmp->padding_char == '-')
+			|| ft_atoi(tmp->str) > 0
+			|| (tmp->typeb == 'x' && tmp->precision > 0
+				&& tmp->padding > 0))
+			free(tmp->str);
 	}
 }

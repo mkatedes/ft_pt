@@ -48,6 +48,7 @@ char	*ft_displate(t_print tmp)
 		i++;
 	}
 	res[i] = '\0';
-	free(tmp.str);
+	if (tmp.type != 's' && tmp.precision > tmp.in_len)
+		free(tmp.str);
 	return (res);
 }

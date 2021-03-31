@@ -33,7 +33,7 @@ typedef struct		s_printable
 void				ft_putchar(char a);
 void				ft_putstr(char *a);
 void				ft_bzero(void *a);
-void				ft_endfree(t_print tmp);
+void				ft_endfree(t_print *tmp);
 void				ft_checkandprint(int *cmp, int *x, t_print tmp);
 void				ft_secondcheck(t_print *tmp, int *x, va_list valist);
 

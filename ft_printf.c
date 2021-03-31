@@ -20,17 +20,21 @@ int	ft_printf(const char *tab, ...)
 	int			cmp;
 	int			res;
 	int			i;
+	int			x;
 
 	g_free = 0;
-	i = 0;
+	i = -1;
 	va_start(valist, tab);
 	while (tab[++i])
 	{
 		if (tab[i] == '%')
 		{
 			i++;
+			x = i;
 			tab = ft_checkstar((char *)tab, &i, valist, &g_free);
-			res = ft_procesprint(&cmp, &i, tab, valist) == 0;
+			if (x > i)
+				continue ;
+			res = ft_procesprint(&cmp, &i, tab, valist);
 			if (res == 0)
 				continue ;
 			else if (res == -1)
