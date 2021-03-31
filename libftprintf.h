@@ -58,7 +58,7 @@ char				*ft_uitoa(unsigned int n);
 char				*ft_point(int a);
 char				*ft_conv0(t_print tmp);
 char				*ft_paddingleft(t_print tmp, int padding, int f);
-char				*ft_paddingright(t_print tmp, int paddinga);
+char				*ft_paddingright(t_print tmp, int padding);
 char				*ft_precision(t_print res);
 char				*ft_strdup(char *s1);
 char				*ft_checkstar(char *tab, int *i, va_list valist, int *g_free);

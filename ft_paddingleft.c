@@ -26,10 +26,10 @@ static char	*padsuptypes(int k, t_print tmp)
 {
 	char	*res;
 
-	if (tmp.precision > tmp.in_len)
+	if (tmp.precision >= tmp.in_len)
 	{
 		tmp.precision = tmp.padding;
-		return (ft_paddingleft(tmp, tmp.padding, -1));
+		return (ft_paddingleft(tmp, tmp.padding, 0));
 	}
 	res = ft_strdup(tmp.str);
 	k = tmp.precision;
@@ -56,10 +56,7 @@ static char	*padsuplen(t_print tmp, int k, int l, int f)
 		l = -5;
 	}
 	res = fill(res, tmp, k, l);
-	if (f == 1)
-		return (res);
-	if ((tmp.precision <= tmp.in_len && tmp.precision > 0 && tmp.type == 's')
-		|| (tmp.precision > 0 && tmp.padding_char == '1' && f != -1))
+	if (f == 1 || tmp.type != 's')
 		free(tmp.str);
 	return (res);
 }

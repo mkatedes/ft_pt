@@ -32,6 +32,8 @@ void	ft_checkandprint(int *cmp, int *x, t_print tmp)
 				write(1, " ", 1);
 		}
 	}
+	if (tmp.padding == 0 && tmp.precision == -1 && ft_atoi(tmp.str) == 0)
+		return ;
 	(*cmp) += ft_strlen(tmp.str);
 	if (tmp.type == 'c' && tmp.str[tmp.padding] == 0
 		&& tmp.padding_char != '-' && *x == -10)
@@ -47,12 +49,12 @@ void	ft_endfree(t_print *tmp)
 	{
 		if (tmp->padding_char != '%')
 		{
-			if (((tmp->padding > tmp->in_len)
+			if ((tmp->padding > tmp->in_len)
 				|| (tmp->padding != -1 && tmp->precision != -1 && tmp->in_len != tmp->padding)
 				|| (tmp->padding_char == '.' && tmp->padding <= tmp->in_len
-					&& tmp->padding > 0) || tmp->padding == -2)
+					&& tmp->padding > 0) || tmp->padding == -2
 				|| (tmp->precision > tmp->in_len && tmp->precision > 0)
-				|| (tmp->padding_char == '-' && tmp->padding <= tmp->in_len))
+				|| (tmp->precision > 0 && tmp->precision != tmp->in_len))
 				free(tmp->str);
 		}
 	}

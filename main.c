@@ -18,7 +18,9 @@ int main()
 	/*unsigned int a;
 	a = 4294967295;
 */
-ft_printf(" %4.2s %4.4s ", "123", "457");
+int a = ft_printf("%.0d", 0);
+int b = printf("%.0d", 0);
+printf("%d %d", a, b);
 
 //ft_printf("|%5s|", 10);
 /*ft_printf(" %*.3s %.3s ", 10, "123", "4567");
