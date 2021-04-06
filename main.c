@@ -6,45 +6,24 @@
 /*   By: mkomadin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:38:24 by mkomadin          #+#    #+#             */
-/*   Updated: 2021/03/26 16:40:23 by mkomadin         ###   ########lyon.fr   */
+/*   Updated: 2021/04/01 12:02:11 by mkomadin         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 int main()
 {
 
-	/*unsigned int a;
+	unsigned int a;
 	a = 4294967295;
-*/
-int a = ft_printf("%.0d", 0);
-int b = printf("%.0d", 0);
-printf("%d %d", a, b);
 
-//ft_printf("|%5s|", 10);
-/*ft_printf(" %*.3s %.3s ", 10, "123", "4567");
-ft_printf(" %*.4s %.4s ", 10, "123", "4567");
-ft_printf(" %*.5s %.5s ", 10, "123", "4567");
-ft_printf(" %*.5s %*.5s ", 10, "123", 10, "4567");
-ft_printf(" %*.5s %*.5s ", -10, "123", 10, "4567");
-ft_printf(" %*.5s %*.5s ", 10, "123", -10, "4567");
-ft_printf(" %*.5s %*.5s ", -10, "123", -10, "4567");
-ft_printf(" %10.s %1.s ", "123", "4567");
-ft_printf(" %0.s %0.s ", "123", "4567");
-ft_printf(" %.s %.s ", "123", "4567");
-ft_printf(" %*s %*s ", 1, "123", 10, "4567");*/
-/*printf(" %*s %*s\n", 1, "123", 10, "4567");*/
-//ft_printf("%4s %4s\n", "123", "1234");
-
-
-//printf("%4s %4s", "123", "1234");
-/*t_printf(" %4.3s %-4.3s ", "123", "4567");
-printf(" %4.3s %-4.3s ", "123", "4567");
-ft_printf(" %4.3s %-4.3s ", "123", "4567");*/
-/*
-printf("%.1s", "");
-ft_printf(" %4.2s %-4.2s ", "123", "4567");*/
+	//ft_printf(" %c%%c%%s%%p%%d%%i%%u%%x%%X%%p%p\n", 0, (void *)42);
+/*	ft_printf(" %10p \n", (void *)(-214));
+	printf(" %10p \n", (void *)(-214));*/
+	printf("%-5.0x\n", 0);
+	ft_printf("%-5.0x\n", 0);
 	/*while (1)
 		;*/
 	return 0;

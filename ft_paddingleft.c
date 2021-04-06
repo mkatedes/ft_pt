@@ -70,7 +70,7 @@ char	*ft_paddingleft(t_print tmp, int padding, int f)
 	k = -1;
 	l = 0;
 	if (padding > ft_strlen(tmp.str))
-		res = padsuplen(tmp, k , l, f);
+		res = padsuplen(tmp, k, l, f);
 	else
 		return (tmp.str);
 	return (res);

@@ -11,7 +11,18 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
+static void	init(long *tmp, int *count, unsigned int n)
+{
+	*tmp = n;
+	*count = 0;
+}
+
+static void	tmp0(char **res)
+{
+	(*res)[0] = '0';
+	(*res)[1] = '\0';
+}
 
 char	*ft_uitoa(unsigned int n)
 {
@@ -19,8 +30,7 @@ char	*ft_uitoa(unsigned int n)
 	long			tmp;
 	char			*res;
 
-	tmp = n;
-	count = 0;
+	init(&tmp, &count, n);
 	while (tmp > 0)
 	{
 		tmp /= 10;
@@ -32,7 +42,7 @@ char	*ft_uitoa(unsigned int n)
 	res[count] = '\0';
 	tmp = n;
 	if (tmp == 0)
-		res[0] = '0';
+		tmp0(&res);
 	while (tmp > 0)
 	{
 		res[--count] = (char)(48 + tmp % 10);

@@ -14,7 +14,7 @@
 
 static char	*padinflen(t_print tmp)
 {
-	if (tmp.precision > 0)
+	if (tmp.precision > 0 && tmp.typeb != 'u')
 		return (ft_strdup(tmp.str));
 	else
 		return (tmp.str);

@@ -66,7 +66,7 @@ static int	getatoi(int k, int p, int *i, const char *tab)
 	char	*tmp;
 
 	tmp = malloc(sizeof(char) * k + 1);
-	if (!tmp)	
+	if (!tmp)
 		return (0);
 	p = -1;
 	*i -= k;

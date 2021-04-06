@@ -14,6 +14,43 @@
 
 int			g_free;
 
+static void	init(int *i, int *cmp)
+{
+	g_free = 0;
+	*i = -1;
+	*cmp = 0;
+}
+
+static void	normalprint(int *cmp, int i, const char *tab)
+{
+	(*cmp)++;
+	write(1, &tab[i], 1);
+}
+
+static int	end(int cmp, char *tab, va_list valist)
+{
+	if (g_free > 0)
+		free((char *)tab);
+	va_end(valist);
+	return (cmp);
+}
+
+static int	ifcontinue(int res)
+{
+	int	k;
+
+	if (res == 0)
+		k = 0;
+	else if (res == -1)
+	{
+		g_free++;
+		k = 0;
+	}
+	else
+		k = 1;
+	return (k);
+}
+
 int	ft_printf(const char *tab, ...)
 {
 	va_list		valist;
@@ -22,8 +59,7 @@ int	ft_printf(const char *tab, ...)
 	int			i;
 	int			x;
 
-	g_free = 0;
-	i = -1;
+	init(&i, &cmp);
 	va_start(valist, tab);
 	while (tab[++i])
 	{
@@ -35,22 +71,11 @@ int	ft_printf(const char *tab, ...)
 			if (x > i)
 				continue ;
 			res = ft_procesprint(&cmp, &i, tab, valist);
-			if (res == 0)
+			if (ifcontinue(res) == 0)
 				continue ;
-			else if (res == -1)
-			{
-				g_free++;
-				continue ;
-			}
 		}
 		else
-		{
-			cmp++;
-			write(1, &tab[i], 1);
-		}
+			normalprint(&cmp, i, tab);
 	}
-	if (g_free > 0)
-		free((char *)tab);
-	va_end(valist);
-	return (cmp);
+	return (end(cmp, (char *)tab, valist));
 }
