@@ -12,20 +12,35 @@
 
 #include "libftprintf.h"
 
-
 static void	fillchar(char **res)
 {
 	(*res)[0] = '0';
 	(*res)[1] = 'x';
 }
 
-char	*ft_point(uintmax_t a)
+static char	*azero(void)
+{
+	char	*res;
+
+	res = malloc(sizeof(char) * 4);
+	if (!res)
+		return (0);
+	res[0] = '0';
+	res[1] = 'x';
+	res[2] = '0';
+	res[3] = '\0';
+	return (res);
+}
+
+char	*ft_point(unsigned long long a)
 {
 	char			*res;
 	char			*str;
 	int				i;
 	int				j;
 
+	if (a == 0)
+		return (azero());
 	str = ft_converpoint(a);
 	res = malloc(sizeof(char) * ft_strlen(str) + 2);
 	if (!res)
@@ -33,13 +48,6 @@ char	*ft_point(uintmax_t a)
 	i = -1;
 	j = 1;
 	fillchar(&res);
-	if (a == 0)
-	{
-		free(str);
-		res[2] = '0';
-		res[3] = '\0';
-		return (res);
-	}
 	while (str[++i])
 		res[++j] = str[i];
 	res[++j] = '\0';

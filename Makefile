@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=		ft_converpoint.c ft_checks.c ft_procesprintf.c ft_paddingandprecision.c ft_endfree.c ft_getprecision.c ft_getpadding.c ft_displate.c ft_checkstar.c ft_strdup.c ft_atoi.c ft_itoa.c ft_strlen.c ft_strlcpy.c ft_isdigit.c ft_precision.c ft_paddingleft.c ft_paddingright.c ft_point.c ft_vatochar.c ft_conv0.c ft_uitoa.c ft_putstr.c ft_convertbase.c ft_convertbase2.c ft_printf.c main.c
+SRCS		=		ft_converpoint.c ft_checks.c ft_procesprintf.c ft_paddingandprecision.c ft_endfree.c ft_getprecision.c ft_getpadding.c ft_displate.c ft_checkstar.c ft_strdup.c ft_atoi.c ft_itoa.c ft_strlen.c ft_strlcpy.c ft_isdigit.c ft_precision.c ft_paddingleft.c ft_paddingright.c ft_point.c ft_vatochar.c ft_conv0.c ft_uitoa.c ft_putstr.c ft_convertbase.c ft_convertbase2.c ft_printf.c
 
 OBJS		=		${SRCS:.c=.o}
 

@@ -11,19 +11,13 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <limits.h>
 #include <stdio.h>
 
 int main()
 {
+	ft_printf("%0.5d \n", -4202225);
 
-	unsigned int a;
-	a = 4294967295;
-
-	//ft_printf(" %c%%c%%s%%p%%d%%i%%u%%x%%X%%p%p\n", 0, (void *)42);
-/*	ft_printf(" %10p \n", (void *)(-214));
-	printf(" %10p \n", (void *)(-214));*/
-	printf("%-5.0x\n", 0);
-	ft_printf("%-5.0x\n", 0);
 	/*while (1)
 		;*/
 	return 0;

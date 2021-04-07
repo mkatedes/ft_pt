@@ -74,7 +74,7 @@ char	*ft_vatochar(va_list valist, char c, t_print *tmp)
 	else if (c == 's')
 		return (va_arg(valist, char *));
 	else if (c == 'p')
-		return (ft_point(va_arg(valist, uintmax_t)));
+		return (ft_point(va_arg(valist, unsigned long long)));
 	else if (c == 'u')
 		return (ft_uitoa(va_arg(valist, unsigned int)));
 	else if (c == 'x')

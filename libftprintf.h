@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-#include <stdio.h>
 # include <stdlib.h>
 
 typedef struct s_printable
@@ -54,7 +53,7 @@ char	*ft_convertbase3(unsigned int u);
 char	*ft_convertbase4(unsigned int u);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
-char	*ft_point(uintmax_t a);
+char	*ft_point(unsigned long long a);
 char	*ft_conv0(t_print tmp);
 char	*ft_paddingleft(t_print tmp, int padding, int f);
 char	*ft_paddingright(t_print tmp, int padding);

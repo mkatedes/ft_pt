@@ -38,11 +38,12 @@ void	ft_checkandprint(int *cmp, int *x, t_print tmp)
 		(*cmp)++;
 		write(1, "\0", 1);
 	}
-	if (((tmp.precision != 0 && !(tmp.type == 'd'
+	if ((((tmp.precision != 0 && !(tmp.type == 'd'
 					&& ft_atoi(tmp.str) == 0 && tmp.padding == 0))
 			|| (tmp.str[0] != '0' && tmp.typeb == 'x'))
 		&& !(tmp.padding_char == '.' && tmp.padding == 0
-			&& tmp.type == 's'))
+			&& tmp.type == 's')) || (tmp.type == 'd' && tmp.precision == 0
+				&& tmp.padding == 0))
 		ft_putstr(tmp.str);
 	else
 	{

@@ -25,8 +25,8 @@ static void	ft_uitoahex(unsigned long long nb, int len, char **res)
 
 char	*ft_converpoint(unsigned long long nbr)
 {
-	char	*res;
-	int		i;
+	char				*res;
+	int					i;
 	unsigned long long	tmp;
 
 	tmp = nbr;

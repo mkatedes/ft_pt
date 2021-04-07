@@ -12,6 +12,8 @@
 
 #include "libftprintf.h"
 
+#include <stdio.h>
+
 static int	padcharzero(t_print *res, int *i)
 {
 	(*i) += 2;
@@ -52,6 +54,8 @@ static int	checkzero(t_print *res, int *i, const char *tab, int *k)
 		return (padcharzero(res, i));
 	else if (res->padding_char == '0' && tab[(*i) + 1] == '.')
 	{
+		if (ft_isdigit(tab[(*i) + 2]))
+			return (0);
 		(*i) += 2;
 		res->padding = -2;
 		res->precision = -2;
