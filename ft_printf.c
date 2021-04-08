@@ -12,6 +12,8 @@
 
 #include "libftprintf.h"
 
+
+
 int			g_free;
 
 static void	init(int *i, int *cmp)
@@ -55,7 +57,6 @@ int	ft_printf(const char *tab, ...)
 {
 	va_list		valist;
 	int			cmp;
-	int			res;
 	int			i;
 	int			x;
 
@@ -65,13 +66,13 @@ int	ft_printf(const char *tab, ...)
 	{
 		if (tab[i] == '%')
 		{
-			i++;
+			++i;
 			x = i;
 			tab = ft_checkstar((char *)tab, &i, valist, &g_free);
 			if (x > i)
 				continue ;
-			res = ft_procesprint(&cmp, &i, tab, valist);
-			if (ifcontinue(res) == 0)
+			x = ft_procesprint(&cmp, &i, tab, valist);
+			if (ifcontinue(x) == 0)
 				continue ;
 		}
 		else

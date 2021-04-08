@@ -16,7 +16,10 @@
 
 int main()
 {
-	ft_printf("%0.5d \n", -4202225);
+	int e = ft_printf("%% *.5i 42 == |% *d|\n", 6, 4222);
+
+	int r = printf("%% *.5i 42 == |% *d|\n", 6, 4222);
+	printf("|%d %d|", e, r);
 
 	/*while (1)
 		;*/

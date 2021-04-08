@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 static void	init(int *x, int *i, t_print *tmp)
 {
@@ -30,7 +31,8 @@ static int	checkempty(int *cmp, int *i, int *x, const char *tab)
 	if (tab[*i] == ' ' && *i >= *x)
 	{
 		write(1, " ", 1);
-		(*i)++;
+		while (tab[(*i)] == ' ')
+			(*i)++;
 		(*cmp)++;
 	}
 	if (*i < *x)

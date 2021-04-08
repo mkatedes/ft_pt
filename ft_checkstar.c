@@ -32,7 +32,7 @@ static char	*replace(char *tab, char *tmp, int ii, int *g_free)
 
 	res = init(&k, &j, tab, tmp);
 	while (tab[++j])
-	{
+	{		
 		if (j == ii)
 		{
 			ii = -1;
@@ -67,8 +67,12 @@ char	*ft_checkstar(char *tab, int *i, va_list valist, int *g_free)
 		{
 			tmp = ft_itoa(va_arg(valist, int));
 			res = replace(tab, tmp, ii, g_free);
+			while (res[ii] != '%')
+				ii--;
 			(*g_free)++;
-			(*i) -= 2;
+			(*i) = ii - 1;
+			if (*i < 0)
+				(*i) = -1;
 			free(tmp);
 			return (res);
 		}

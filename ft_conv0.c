@@ -80,7 +80,8 @@ char	*ft_conv0(t_print tmp)
 
 	if (tmp.padding == 0)
 		padzero(tmp);
-	if (tmp.padding > ft_strlen(tmp.str))
+	if (tmp.padding > ft_strlen(tmp.str) || (tmp.padding == ft_strlen(tmp.str)
+			&& tmp.str[0] == '-' && tmp.padding_char == '.'))
 	{
 		res = malloc(sizeof(char) * tmp.padding + 1);
 		if (!res)

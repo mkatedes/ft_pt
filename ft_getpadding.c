@@ -40,6 +40,11 @@ static int	padcharpoint(const char *tab, t_print *res, int *i)
 
 static int	checkzero(t_print *res, int *i, const char *tab, int *k)
 {
+	int	a;
+
+	a = 1;
+	if (tab[(*i)] == ' ')
+		a = -1;
 	while (ft_isdigit(tab[++(*i)]))
 		(*k)++;
 	if (*k != 0)
@@ -62,7 +67,7 @@ static int	checkzero(t_print *res, int *i, const char *tab, int *k)
 	}
 	else
 		res->padding = -1;
-	return (1);
+	return (a);
 }
 
 static int	getatoi(int k, int p, int *i, const char *tab)
