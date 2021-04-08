@@ -82,7 +82,7 @@ void	ft_endfree(t_print *tmp)
 	{
 		if (tmp->padding != 0 || tmp->type == 'p'
 			|| (tmp->padding == 0 && tmp->padding_char == '-')
-			|| ft_atoi(tmp->str) > 0
+			|| ft_atoi(tmp->str) != 0
 			|| (tmp->typeb == 'x' && tmp->precision > 0
 				&& tmp->padding > 0)
 			|| (tmp->typeb == 'x' && tmp->str[0] != '0' && tmp->padding == 0

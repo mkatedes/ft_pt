@@ -16,7 +16,7 @@
 
 int main()
 {
-	ft_printf("%0.5d \n", -4202225);
+	ft_printf("%0.10d \n", -4202225);
 
 	/*while (1)
 		;*/
