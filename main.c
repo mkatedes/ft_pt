@@ -21,6 +21,7 @@ int main()
 	int r = printf("%% *.5i 42 == |% *d|\n", 6, 4222);
 	printf("|%d %d|", e, r);
 
+
 	/*while (1)
 		;*/
 	return 0;
